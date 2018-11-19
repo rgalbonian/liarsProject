@@ -1,3 +1,4 @@
+
 $( document ).ready(function() {
 
 });
@@ -34,22 +35,48 @@ $( "#add-item-btn").click(function(){
 });
 
 $(document).on("click", "#modal-confirm-summary-btn", function(event){
-	window.alert("Item has been added!");
+
 	$('#item-summary-modal').modal('hide')
 	$('#add-item-modal').modal('hide')
+	$('#alertModal').modal('show')
 });
-
+$(document).on("click", "#modal-edit-summary-btn", function(event){
+	console.log("wasss")
+	$("#sum-amount").html("");
+    $("#sum-unit").html("");
+    $("#sum-quan").html("");
+});
 $(document).on("click", "#modal-add-btn", function(event){
-	$('#item-summary-modal').modal('show')
-	console.log("hehe")
-	var name = $("#item-name").val()
-  	var quantity = $("#item-quantity").val()
-  	var unit = $("#item-unit").val()
-  	var image = $("item-image").val()
+  	var name = $("#item-name").val()
+	var image = $('#item-image').get(0).files[0];
     var category = $("input[name='itemCat']:checked").val();
-    console.log(name + quantity + unit + image + category);
+    $("#sum-name").html("Item Name: "+ name);
+    $("#sum-cat").html("Category: " + category);
+    if (category == "apparatus"){
+	  	var quantity = $("#item-quantity").val()
+	  	if (name.length == 0 ) {
+	  		$(".item-name").css("border-color", "red");
+	  		console.log("name is");
 
+	  	}else{
+	  	$("#sum-quan").html("Quantity: " + quantity + "<br>");
+    	console.log(name + quantity + category);
+    	 previewFile('#item-image', '#sum-image');
+    		$('#item-summary-modal').modal('show');
+    	}
+    }else {
+    	var amount = $("#item-amount").val()
+      	var unit = $("#item-unit").val()
+      	$("#sum-amount").html("Amount: " + amount +  "<br>");
+    	$("#sum-unit").html("Unit: " +unit);
+      	console.log(name + amount + unit + category);
+    }
+   
+   
+    
 });
+
+
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -61,7 +88,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var email = user.email;
 		var uid = user.uid
 		console.log(uid)
-		document.getElementById("note").innerHTML = "Welcome, "+ email;
+		
 		var usersRef = firebase.database().ref("0/users/" + uid);
 		var userId = firebase.auth().currentUser.uid;
 		firebase.database().ref('0/users/' + userId).once('value').then(function(snapshot) {
@@ -155,13 +182,12 @@ function loadItems(lab){
 	});
 }
 
-function previewFile(){
-       var preview = document.querySelector('img'); //selects the query named img
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var imgname = document.getElementById("file-name");
+function previewFile(sourceID, destID){
+	console.log(sourceID, destID);
+       var preview = document.querySelector(destID); //selects the query named img
+       var file = $(sourceID).get(0).files[0];
        console.log(file)
        console.log(preview)
-       console.log(imgname)
        var reader  = new FileReader();
 
        reader.onloadend = function () {
@@ -171,23 +197,30 @@ function previewFile(){
 
        if (file) {
            reader.readAsDataURL(file); //reads the data as a URL
-           var filename = file.name;
-           imgname.innerHTML = filename
+           
        } else {
            preview.src = "";
        }
   }
-$( "#add-item-modal").on("click", "#modal-add-btn", function(){
-  var addItem = function(){
-  	var name = $("#item-name").val()
-  	var quantity = $("#item-quantity").val()
-  	var unit = $("#item-unit").val()
-  	var image = $("item-image").val()
-    var category = $("input[name='itemCat']:checked").val();
-    console.log(name + quantity + unit + image + category);
-  	//push new item
 
-  	//preview first
+//firebase upload file
+function tryUpload() {
+	// body...
 
-  }});
+const ref = firebase.storage().ref();
+const file = $('#photo').get(0).files[0];
+const name = file.name;
+console.log(name);
+const metadata = {
+  contentType: file.type
+};
+const task = ref.child(name).put(file, metadata);
+task
+  .then(snapshot => snapshot.ref.getDownloadURL())
+  .then((url) => {
+    console.log(url);
+    document.querySelector('#photo').src = url;
+  })
+  .catch(console.error);
+}
 

@@ -1,0 +1,183 @@
+[{
+	"users":{
+		"Z2bU9e87XweN6FDaCdfDDpL9iO02":{
+			"name": "Rhevie Rose Albonian",
+			"laboratory": "chemistry"
+		}
+}},
+{
+	"laboratories":{
+		"chemistry":[
+			"Chemicals", "Apparatus"
+		],
+		"biology":[
+			"Chemicals", "Apparatus", "Equipment"
+		]
+	}
+},
+{"chemistry":{
+	"chemicals":{
+		"metals":[
+			"metal1", "metal2", "metal3"
+		],
+		"nonmetals":[
+			"nonmetal1", "nonmetal2", "nonmetal3"
+		],
+		"cat3":[
+			"cat31", "cat32", "cat33"
+		]
+	},
+
+	"apparatus":[
+		"beaker100", "beaker200", "stirring-rod"
+	]
+}},
+{"biology":{
+	"chemicals":{
+		"metals":[
+			"metal1", "metal2", "metal3"
+		],
+		"nonmetals":[
+			"nonmetal1", "nonmetal2", "nonmetal3"
+		],
+		"cat3":[
+			"cat31", "cat32", "cat33"
+		]
+	},
+	
+		"apparatus":[
+			"beaker100", "beaker200", "stirring-rod"
+		]
+	,
+		"equipment":{
+			"microscopes": {
+				"microscopes":{
+					"code": "micro1",
+					"student-assigned":"rhevie"
+				},
+				"microscopes":{
+					"code":"micro2",
+					"student-assigned":"hani"
+				}
+			},
+			"projectors":{
+				"proj1":{
+					"status":"borrowed",
+					"borrower":"rhevie"
+				},
+				"proj2":{
+					"status":"available",
+					"borrower":"null"
+				}
+			}
+		}}
+},
+{
+	"metals":{
+			"metal1":{
+				"name":"Metalicity",
+				"quantity":"100",
+				"unit":"mL"
+			},
+			"metal2":{
+				"name":"Metooolo",
+				"quantity":"200",
+				"unit":"L"
+			 }, 
+			 "metal3":{
+			 	"name":"Metallic",
+				"quantity":"1000",
+				"unit":"mL"
+			 }
+		},
+		
+	"nonmetals":{
+			"nonmetal1":{
+				"name":"NonMetalicity",
+				"quantity":"100",
+				"unit":"mL"
+			},
+			"nonmetal2":{
+				"name":"Metooolo",
+				"quantity":"200",
+				"unit":"L"
+			 }, 
+			 "nonmetal3":{
+			 	"name":"Metallic",
+				"quantity":"1000",
+				"unit":"mL"
+			 }
+			},
+	"cat3":{
+			"cat31":{
+				"name":"catMetalicity",
+				"quantity":"100",
+				"unit":"mL"
+			},
+			"cat32":{
+				"name":"catMetooolo",
+				"quantity":"200",
+				"unit":"L"
+			 }, 
+			 "cat33":{
+			 	"name":"catMetallic",
+				"quantity":"1000",
+				"unit":"mL"
+			 }
+		}	
+},
+{
+	"metals":{
+			"metal1":{
+				"name":"chuchu",
+				"quantity":"100",
+				"unit":"mL"
+			},
+			"metal2":{
+				"name":"chacha",
+				"quantity":"200",
+				"unit":"L"
+			 }, 
+			 "metal3":{
+			 	"name":"cheche",
+				"quantity":"1000",
+				"unit":"mL"
+			 }
+		},
+		
+	"nonmetals":{
+			"nonmetal1":{
+				"name":"nonchacha",
+				"quantity":"100",
+				"unit":"mL"
+			},
+			"nonmetal2":{
+				"name":"noncheche",
+				"quantity":"200",
+				"unit":"L"
+			 }, 
+			 "nonmetal3":{
+			 	"name":"nonchuchu",
+				"quantity":"1000",
+				"unit":"mL"
+			 }
+			},
+	"cat3":{
+			"cat31":{
+				"name":"catchacha",
+				"quantity":"100",
+				"unit":"mL"
+			},
+			"cat32":{
+				"name":"catcheche",
+				"quantity":"200",
+				"unit":"L"
+			 }, 
+			 "cat33":{
+			 	"name":"catchuchu",
+				"quantity":"1000",
+				"unit":"mL"
+			 }
+		}	
+}
+]
