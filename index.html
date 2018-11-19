@@ -1,0 +1,152 @@
+<html>
+<head>
+<!--<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAS0sFpZAeffhYaWKy7yrOegT5U4FtGX0A",
+    authDomain: "liarsproject.firebaseapp.com",
+    databaseURL: "https://liarsproject.firebaseio.com",
+    projectId: "liarsproject",
+    storageBucket: "liarsproject.appspot.com",
+    messagingSenderId: "497341972181"
+  };
+  firebase.initializeApp(config);
+</script> -->
+  <link rel="stylesheet" href="inventory.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <span id="note"></span>
+  <div id="login-div">
+    
+    <input id="username" name="username" placeholder="Username"> 
+    <input id="password" name="password" placeholder="Password">
+    <button id="loginBtn" onclick="login()"> Login</button>
+    
+  </div>
+  <div id="logout-div">
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </div>
+  <div id="inventory-div" class="inventory-div">
+    <div class="inventory-header">
+      <form>
+        <input class="searchBar" name="search" placeholder="Search..">
+      </form>
+
+      <button class="inventoryBtn" id="add-item-btn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add-item-modal" >Add item</button>
+      <button class="inventoryBtn" id="view-in-list">View in List</button>
+    </div>
+    <div class="filter-div">
+      
+      <div class="cat-div">
+        Category <br>
+        <span id="categories-div"></span>
+        <hr>
+        Sort
+        <br>
+        <input type=radio name="sorting" value="az"> A-Z</input> <br>
+        <input type=radio name="sorting" value="za"> Z-A</input>
+        <hr>
+        Direction
+        <br>
+        <input type=radio name="quantity" value="asc"> Ascending Quantity</input> <br>
+        <input type=radio name="quantity" value="desc"> Descending Quantity</input>
+        <hr>
+        <button id="filter-btn" class="filter-btn">Apply Now</button>
+      </div>
+    </div>
+    <div class="items-div" id="items-div">items
+    </div>
+  </div>
+  <script src="index.js"></script>
+
+</body>
+
+<!-- Add Item Modal -->
+<div id="add-item-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Item</h4>
+      </div>
+      <div class="modal-body">
+        Item Name &emsp; 
+         <input name="item-name" size="50px" id="item-name" >
+        Category &emsp; 
+        <div class="modal-category">
+
+          <span id="add-item-categories-div" class="add-item-categories-div"></span>
+          </div>
+        <div class="appa-quan">
+            Quantity: &emsp; <input type="number" class="input-quantity"   size="80" min="1" id="item-quantity">   
+            &emsp; 
+        </div>
+        <div class="chem-quan">
+            Amount:  &emsp;<input type="number" class="input-amount "  min="0" id="item-amount">   
+            &emsp; Unit
+            <span id="add-item-unit-div"></span> 
+        </div>
+        <div class="image-uploading">
+         <span class="image-label"> Image </span>
+        <div class="upload-btn-wrapper">
+           <button class="btn">Upload file</button> <span id="file-name"></span>
+          <input type="file" accept="image/*" onchange="previewFile()"  class="item-image" id="item-image"><br>
+        </div>
+        <div class="img-preview">
+        <img height="200" src="images/add-item-default.png" alt="preview" >
+        </div> 
+        
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn modal-add-btn" id="modal-add-btn"> Add Item</button>
+        <button type="button" class="btn modal-cancel-btn" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Item Summary Modal -->
+<div id="item-summary-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Item Summary</h4>
+      </div>
+      <div class="modal-body">
+        Item Name: <br>
+        Category:<br>
+        Quantity: <br>
+        Unit:
+
+        <div class="summary-img-preview">
+        <img height="300" src="images/add-item-default.png" alt="preview" >
+        </div> <br>
+      
+      </div>
+      <div class="modal-footer">
+        <button class="btn modal-add-btn" id="modal-confirm-summary-btn"> Confirm </button>
+        <button type="button" class="btn modal-cancel-btn" data-dismiss="modal">Edit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</html>
+
+
+
+</html>
