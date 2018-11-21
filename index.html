@@ -11,7 +11,8 @@
     storageBucket: "liarsproject.appspot.com",
     messagingSenderId: "497341972181"
   };
-  firebase.initializeApp(config);
+  app = firebase.initializeApp(config);
+
 </script> 
   <link rel="stylesheet" href="inventory.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,8 +39,8 @@
         <input class="searchBar" name="search" placeholder="Search..">
       </form>
 
-      <button class="inventoryBtn" id="add-item-btn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add-item-modal" >Add item</button>
-      <button class="inventoryBtn" id="view-in-list">View in List</button>
+      <button class="add-item-btn" id="add-item-btn"  data-toggle="modal" data-target="#add-item-modal" >Add item</button>
+      <button class="view-in-list-btn" id="view-in-list">View in List</button>
     </div>
     <div class="filter-div">
       
@@ -56,8 +57,7 @@
         <br>
         <input type=radio name="quantity" value="asc"> Ascending Quantity</input> <br>
         <input type=radio name="quantity" value="desc"> Descending Quantity</input>
-        <hr>
-        <button id="filter-btn" class="filter-btn">Apply Now</button>
+        
       </div>
     </div>
     <div class="items-div" id="items-div">items
@@ -77,24 +77,28 @@
         <h4 class="modal-title">Add Item</h4>
       </div>
       <div class="modal-body">
+        <span id="error-name" class="error"></span> 
         Item Name &emsp; 
-         <input name="item-name" size="50px" id="item-name" class="item-name" >
+         <input name="item-name" size="50px" id="item-name" class="input-name" >
         Category &emsp; 
         <div class="modal-category">
-
-          <span id="add-item-categories-div" class="add-item-categories-div"></span>
+          <span id="error-cat" class="error-cat"></span>
+          <div id="add-item-categories-div" class="add-item-categories-div"></div>
           </div>
+          <span id="error-quan" class="error"></span>
         <div class="appa-quan">
             Quantity: &emsp; <input type="number" class="input-quantity"   size="80" min="1" id="item-quantity">   
             &emsp; 
         </div>
         <div class="chem-quan">
+          <span id="error-amount" class="error" ></span>
             Amount:  &emsp;<input type="number" class="input-amount "  min="0" id="item-amount">   
             &emsp; Unit
-            <span id="add-item-unit-div"></span> 
+            <div id="add-item-unit-div"></div> 
         </div>
+        <span id="error-image" class="error error-image"></span>
         <div class="image-uploading">
-         <span class="image-label"> Image </span>
+         <p class="image-label"> Image </p>
         <div class="upload-btn-wrapper">
            <button class="btn">Upload file</button> <!-- <span id="file-name"></span> -->
           <input type="file" accept="image/*" onchange="previewFile('#item-image', '#img-previewer')"  class="item-image" id="item-image"><br>
@@ -107,7 +111,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn modal-add-btn" id="modal-add-btn"> Add Item</button>
-        <button type="button" class="btn modal-cancel-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn modal-cancel-btn" id="modal-cancel-btn" data-dismiss="modal">Cancel</button>
       </div>
     </div>
 

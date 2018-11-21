@@ -6,20 +6,31 @@
 }
 .inventory-div{
 	border: 2px solid black;
-	height: 80%;
+	height: 85%;
 	width: 85%;
 	margin:0 auto;
+	padding-bottom: 20px;
 }
 input[type="number"] {
    width:182px;
+}
+#add-item-unit-div{
+	display: inline;
 }
 .inventory-header{
 	width: 100%;
 	height: 15%;
 	margin:5px;
 }
-
-
+.error-image{
+	margin-top:8px;
+	margin-bottom: -8px;
+}
+.error-cat{
+	color:red;
+	font-style: italic;
+	font-size: 12px;
+}
 .filter-div{
 	padding: 10px;
 	margin-left: 20px;
@@ -40,11 +51,14 @@ input[type="number"] {
 	overflow-y: scroll;
 }
 .card-div{
-	height: 130px;
+	height: 140px;
 	width: 750px;
 	border: solid 1px grey;
 	margin: 2px;
 	padding: 5px;
+}
+.card-div:hover{
+	background-color: gray;
 }
 .card{
 	display: block;
@@ -52,7 +66,7 @@ input[type="number"] {
 }
 .card-btn{
 	float:right;
-	margin:5px;
+	margin:3px;
 }
 .searchBar {
 	margin: 14px;
@@ -68,21 +82,31 @@ input[type="number"] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     float: left;
+    border-radius: 10px;
 }
-
 .searchBar:focus {
+  outline-width: 0;
+  border-radius: 10px;
+    border: 2px solid pink;
     width: 50%;
 }
-.inventoryBtn {
+
+
+.add-item-btn, .view-in-list-btn {
   padding: 10px 15px;
   font-size: 12px;
   cursor: pointer;
   text-align: center;
   float:right;
-  margin-right:10px;
+  
 }
-
-.inventoryBtn:hover {background-color: gray;}
+.view-in-list-btn{
+	margin-right: 10px;
+}
+.add-item-btn{
+	margin-right: 20px;
+}
+.add-item-btn:hover, .view-in-list-btn:hover {background-color: gray;}
 
 .cat-div{
 	/*background-color: skyblue;*/
@@ -125,12 +149,19 @@ input[type="number"] {
 	visibility: hidden;
 	display: none;
 }
-
+.error{
+	color:red;
+	font-style: italic;
+	font-size: 12px;
+	margin-left: 105px;
+	display: block;
+}	
 .chem-quan{
 	visibility: visible;
 
 }
 .image-uploading{
+	padding-top: -10px;
 }
 .upload-btn-wrapper {
   position: relative;
