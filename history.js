@@ -1,3 +1,17 @@
+function history() {
+	//show and active history
+	document.getElementById("history").classList.add("active");
+	document.getElementById("history_div").style.display="block";
+	//inactive other tabs
+	document.getElementById("accountability").classList.remove("active");
+	document.getElementById("request").classList.remove("active");
+	document.getElementById("inventory").classList.remove("active");
+	//hide away other divs
+	document.getElementById("inventory-div").style.display="none";
+	document.getElementById("request_div").style.display="none";
+	document.getElementById("accountability_div").style.display="none";
+}
+
 
 $( document ).ready(function() {
 	console.log("hehehe");

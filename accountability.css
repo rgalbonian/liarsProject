@@ -1,0 +1,46 @@
+
+#wrapper{
+	padding-top: 2%;
+	padding-left: 10%;
+  padding-bottom: 2%;
+}
+#accountTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+}
+
+#accountTable td, #accountTable th {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#accountTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#accountTable tr:hover {background-color: #ddd;}
+
+#accountTable th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    background-color: grey;
+    color: white;
+}
+.searchBar {
+    margin: 0px 0px 14px 0px;
+    width: 90%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    font-size: 14px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 8px 15px 8px 20px;
+    border-radius: 10px;
+}
+.searchBar:focus {
+  outline-width: 0;
+  border-radius: 10px;
+    border: 2px solid pink;
+}
