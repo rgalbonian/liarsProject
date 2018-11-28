@@ -41,9 +41,9 @@
 
 		<div id="login" class="login container border rounded" style="display:none">
 		  <h2 >Login</h2>
-		    <label id="errormsg" style="color:pink"></label>
+		    <label id="errormsg" style="color:red"></label>
 		    <div class="form-group">
-		      <label for="username">Username:</label>
+		      <label for="username">Email:</label>
 		      <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
 		    </div>
 		    <div class="form-group">
@@ -77,6 +77,7 @@
 
 			    </div>
 			    <!--pending-->
+			 	
 			    <div id="pending_div" style="display:none" >
 			    	<div class="items-div-pcd" id="items-div-pcd">
 			    		<div class="card-div-pending dbl rounded" data-target="#more">
@@ -86,7 +87,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button type="button" class="btn btn-info btn card-btn" data-toggle="modal" data-target="#declineModal"> Decline </button>
+			    			<button type="button" class="btn btn-info btn card-btn" id="declineMain"> Decline </button>
 			    			<button class="btn btn card-btn" id="reqAdd"> Process </button>
 			    		</div>
 			    		<div class="card-div-pending dbl rounded" data-target="#more">
@@ -96,7 +97,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button type="button" class="btn btn-info btn card-btn" data-toggle="modal" data-target="#declineModal"> Decline </button>
+			    			<button type="button" class="btn btn-info btn card-btn" id="declineMain"> Decline </button>
 			    			<button class="btn btn card-btn"> Process </button>
 			    		</div>
 			    		<div class="card-div-pending dbl rounded" data-target="#more">
@@ -106,38 +107,11 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button type="button" class="btn btn-info btn card-btn" data-toggle="modal" data-target="#declineModal"> Decline </button>
+			    			<button type="button" class="btn btn-info btn card-btn" id="declineMain"> Decline </button>
 			    			<button class="btn btn card-btn"> Process </button>
 			    		</div>
 			    	</div>
 			    </div>
-				<!-- Decline Modal -->
-				<div class="modal fade" id="declineModal" role="dialog">
-					<div class="modal-dialog">
-				    
-				    	<!-- Decline Model Content -->
-					    <div class="modal-content">
-					    	<div class="modal-header">
-					        	<h4 class="modal-title">Decline Request</h4>
-					        	<button type="button" class="close" data-dismiss="modal">&times;</button>
-					        </div>
-					        <div class="modal-body">
-					        	<form>
-					        		<div class="form-group">
-						        		<label for = "decline-reason" class = "col-form-label">Response:</label>
-						        		<textarea class="form-control" id="message-text"></textarea>
-						        	</div>
-					        	</form>
-					        </div>
-					        
-					        <div class="modal-footer">
-					        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					        	<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#confirmModal">Submit</button>
-					    	</div>
-					    </div>
-				    
-					</div>
-				</div>
 
 				<!--Confirmation Modal-->
 				<div class="modal" id="confirmModal" role="dialog">
@@ -152,14 +126,14 @@
 					        <div class="modal-body">
 					        	<form>
 					        		<div class="form-group">
-						        		<label for = "decline-reason" class = "col-form-label">Decline request?</label>
+						        		<label for = "decline-reason" class = "col-form-label">Are you sure?</label>
 						        	</div>
 					        	</form>
 					        </div>
 					        
 					        <div class="modal-footer">
-					        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					        	<button type="button" class="btn btn-primary" data-dismiss="modal">Decline</button>
+					        	<button type="button" class="btn btn-default" data-dismiss="modal" id="cancelConfirm">Cancel</button>
+					        	<button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
 					    	</div>
 					    </div>
 				    
@@ -185,12 +159,63 @@
 			    		<span class="card request-items">Items:</span>
 				      </div>
 				      <div class="modal-footer">
-			    		<button type="button" class="btn btn-info btn card-btn" data-toggle="modal" data-target="#declineModal"> Decline </button>
+			    		<button type="button" class="btn btn-info btn card-btn" id="declineMain"> Decline </button>
 			    		<button class="btn btn card-btn"> Process </button>
 				      </div>
 				    </div>
 				  </div>
 				</div>
+				<!--View History Modal-->
+				<div class="modal fade" id="viewHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLongTitle">History of Request Number</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				     	 <table class="table table-striped">
+						  <tbody>
+						    <tr>
+						      <td width="30%">09-28-18<br>02:03PM</td>
+						      <td>Request sent.</td>	      
+						    </tr>
+						    <tr>
+						      <td>09-28-18<br>02:05PM</td>
+						      <td>Request viewed by STAFF NAME.</td>	     
+						    </tr>
+						    <tr>
+						      <td>09-28-18<br>02:10PM</td>
+						      <td>Request edited.</td>	      
+						    </tr>
+						    <tr>
+						      <td>09-28-18<br>02:30PM</td>
+						      <td>Request updated to PROCESSING by STAFF NAME.</td>	      
+						    </tr>
+						    <tr>
+						      <td>09-29-18<br>08:15AM</td>
+						      <td>Request updated to READY by STAFF NAME.</td>	      
+						    </tr>
+						    <tr>
+						      <td>09-29-18<br>01:00PM</td>
+						      <td>Request updated to RELEASED to NAME by STAFF NAME.</td>	      
+						    </tr>
+						    <tr>
+						      <td>09-29-18<br>02:23PM</td>
+						      <td>Request updated to COMPLETE received by STAFF NAME.</td>	      
+						    </tr>
+						  </tbody>
+						</table>
+				      </div>
+				      <div class="modal-footer">
+			    		<button type="button" class="btn btn-info btn card-btn" data-toggle="modal" data-dismiss="modal"> Close </button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
 			    <!--processing-->
 			    <div id="processing_div" style="display:none">
 			    	<!--filter-->		    	
@@ -213,7 +238,7 @@
 				    	</div>
 				    </div>
 				    <div class="items-div-pcd" id="items-div-pcd">
-			    		<div class="card-div-pending dbl rounded" data-target="#more">
+			    		<div class="card-div-pending dblProcessing rounded" data-target="#moreProcessing">
 			    			<span class="card status">Status</span>
 			    			<span class="card request-number">Request Number:</span>
 			    			<span class="card request-sent">Request Sent:</span>
@@ -222,7 +247,7 @@
 			    			<span class="card request-items">Items:</span>
 			    			<button class="btn btn card-btn" onclick="update_status()" id="reqAdd" data-toggle="modal" data-target="#updateModal"> Update </button>
 			    		</div>
-			    		<div class="card-div-pending dbl rounded" data-target="#more">
+			    		<div class="card-div-pending dblProcessing rounded" data-target="#moreProcessing">
 			    			<span class="card status">Status</span>
 			    			<span class="card request-number">Request Number:</span>
 			    			<span class="card request-sent">Request Sent:</span>
@@ -231,7 +256,7 @@
 			    			<span class="card request-items">Items:</span>
 			    			<button class="btn btn card-btn" onclick="update_status()" data-toggle="modal" data-target="#updateModal"> Update </button>
 			    		</div>
-			    		<div class="card-div-pending dbl rounded" data-target="#more">
+			    		<div class="card-div-pending dblProcessing rounded" data-target="#moreProcessing">
 			    			<span class="card status">Status</span>
 			    			<span class="card request-number">Request Number:</span>
 			    			<span class="card request-sent">Request Sent:</span>
@@ -242,6 +267,31 @@
 			    		</div>
 			    	</div>
 			    </div>
+			    <!--See More of Request Modal but for Processing-->
+				<div class="modal fade" id="moreProcessing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLongTitle">Request Number</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <span class="card status">Status</span>
+			    		<span class="card request-number">Request Number:</span>
+			    		<span class="card request-sent">Request Sent:</span>
+			    		<span class="card request-needed">Request Needed:</span>
+			    		<span class="card request-requestor">Requestor Name:</span>
+			    		<span class="card request-items">Items:</span>
+				      </div>
+				      <div class="modal-footer">
+			    		<button type="button" class="btn btn-info btn card-btn" data-toggle="modal" data-target="#declineModal"> Decline </button>
+			    		<button class="btn btn card-btn" onclick="update_status()" data-toggle="modal" data-target="#updateModal" data-dismiss="modal"> Update </button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			    <!-- Update Modal -->
 				<div class="modal fade" id="updateModal" role="dialog">
 					<div class="modal-dialog">
@@ -253,7 +303,7 @@
 					        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 					        </div>
 					        <div class="modal-body">
-					        	<h4>Status</h4>
+					        	<span id="statusSpan"><h4>Status</h4></span>
 						        <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 							      <!-- <span id="chosenStatus"> Preparing </span>  Preparing <span class="caret"></span>
 							    </button>-->
@@ -269,31 +319,35 @@
 							    <br>
 							    <div id="updateModalContent">
 							    	<div id="releasedContent">
+							    	<span id="releaseConfirmUpdate" value="true" hidden></span>
 							    		<div class="form-check">
 									      <label class="form-check-label" for="radio1">
-									        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Requestor
+									        <input type="radio" onclick="notOther()" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Requestor
 									      </label>
 									    </div>
 									    <div class="form-check">
 									      <label class="form-check-label" for="radio2">
-									        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Authorized by Requestor
+									        <input type="radio" onclick="notOther()" class="form-check-input" id="radio2" name="optradio" value="option2">Authorized by Requestor
 									      </label>
 									    </div>
 									    <div class="form-check">
 									      <label class="form-check-label" for="radio3">
-									        <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3">Other
-									        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="20XX-XXXX">
+									        <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3">Other <span id="studentIdWarning" style="color:red"></span>
+									        <input type="text" onfocus="releasedOtherCheck()" oninput="releasedOtherCheck()" class="form-control" id="student_id" placeholder="20XX-XXXX">
 									      </label>
 									    </div>
 							    	</div>
 							    	<div id="defectiveContent">
+							    		<span id="releaseConfirmDefective" value="true" hidden></span>
 							    		<h4>Item Status</h4>
 							    		<table id="defectiveTable" class="table table-borderless">
+							    		<span id="defectiveTableWarning" style="color:red"></span>
 									    <thead>
 									      <tr>
-									        <th><center>Item Name</center></th>
-									        <th><center>Quantity</center></th>
-									        <th><center>Status</center></th>
+									        <th width="50%"><center>Item Name</center></th>
+									        <th width="5%"><center>Quantity</center></th>
+									        <th width="30%"><center>Status</center></th>
+									        <th width="5%"><center> </center></th>
 									      </tr>
 									    </thead>
 									    <tbody>
@@ -318,7 +372,6 @@
 												</select>
 											</td>
 											<td>
-												<center>
 												<div class="form-check-inline">
 												  <label class="form-check-label">
 												    <input type="radio" class="form-check-input" name="optradio">Missing
@@ -329,10 +382,9 @@
 												    <input type="radio" class="form-check-input" name="optradio">Defective
 												  </label>
 												</div>
-												</center>
 											</td>
-											<td>
-												<button id="0" onclick="defectiveDeleteItem(id)" class="btn-light btn">X</button>
+											<td><center>
+												<button id="1" onclick="defectiveDeleteItem(id)" class="btn-light btn">X</button></center>
 											</td>
 											</tr>
 											</span>
@@ -349,6 +401,14 @@
 							        	</form>
 							    	</div>
 							    	<div id="declinedContent">
+							    		<span id="releaseConfirmDeclined" value="false" hidden></span>
+							    		<form>
+							        		<div class="form-group">
+								        		<label for = "decline-reason" class = "col-form-label">Comments:</label>
+								        		<span style="color:red" id= "declineWarning"></span>
+								        		<textarea class="form-control" id="updateDeclineComments"></textarea>
+								        	</div>
+							        	</form>
 							    	</div>
 							    </div>
 					        	<!-- <form>
@@ -361,7 +421,7 @@
 					        
 					        <div class="modal-footer">
 					        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					        	<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#confirmModal">Submit</button>
+					        	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal" id="submitUpdate">Submit</button>
 					    	</div>
 					    </div>
 					</div>
@@ -377,7 +437,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button class="btn btn card-btn"> View History </button>
+			    			<button class="btn btn card-btn" data-toggle="modal" data-target="#viewHistoryModal"> View History </button>
 			    			<button class="btn btn card-btn"> Move to Pending </button>
 			    		</div>
 			    		<div class="card-div-pending rounded">
@@ -387,7 +447,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button class="btn btn card-btn"> View History </button>
+			    			<button class="btn btn card-btn" data-toggle="modal" data-target="#viewHistoryModal"> View History </button>
 			    			<button class="btn btn card-btn"> Move to Pending </button>
 			    		</div>
 			    		<div class="card-div-pending rounded">
@@ -397,7 +457,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button class="btn card-btn"> View History </button>
+			    			<button class="btn card-btn" data-toggle="modal" data-target="#viewHistoryModal"> View History </button>
 			    			<button class="btn card-btn"> Move to Pending </button>
 			    		</div>
 			    	</div>
@@ -412,7 +472,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button class="btn card-btn"> View History </button>
+			    			<button class="btn card-btn" data-toggle="modal" data-target="#viewHistoryModal"> View History </button>
 			    		</div>
 			    		<div class="card-div-pending rounded">
 			    			<span class="card status">Status</span>
@@ -421,7 +481,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button class="btn card-btn"> View History </button>
+			    			<button class="btn card-btn" data-toggle="modal" data-target="#viewHistoryModal"> View History </button>
 			    		</div>
 			    		<div class="card-div-pending rounded">
 			    			<span class="card status">Status</span>
@@ -430,7 +490,7 @@
 			    			<span class="card request-needed">Request Needed:</span>
 			    			<span class="card request-requestor">Requestor Name:</span>
 			    			<span class="card request-items">Items:</span>
-			    			<button class="btn card-btn"> View History </button>
+			    			<button class="btn card-btn" data-toggle="modal" data-target="#viewHistoryModal"> View History </button>
 			    		</div>
 			    	</div>
 			    </div>
@@ -543,7 +603,7 @@
 				      
 				      </div>
 				      <div class="modal-footer">
-				        <button class="btn modal-add-btn" id="modal-confirm-summary-btn"> Confirm </button>
+				        <button class="btn modal-add-btn" id="confirm"> Confirm </button>
 				        <button class="btn modal-cancel-btn" data-dismiss="modal" id="modal-edit-summary-btn">Edit</button>
 				      </div>
 				    </div>
