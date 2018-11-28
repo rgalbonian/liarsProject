@@ -26,21 +26,3 @@
     background-color: grey;
     color: white;
 }
-.searchBar {
-    margin: 0px 0px 14px 0px;
-    width: 90%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    font-size: 14px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 8px 15px 8px 20px;
-    border-radius: 10px;
-}
-.searchBar:focus {
-  outline-width: 0;
-  border-radius: 10px;
-    border: 2px solid pink;
-}

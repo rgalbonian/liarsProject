@@ -68,31 +68,10 @@ input[type="number"] {
 	float:right;
 	margin:3px;
 }
-.searchBar {
-	margin: 14px;
-    width: 20%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    font-size: 14px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 8px 15px 8px 20px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    float: left;
-    border-radius: 10px;
-}
-.searchBar:focus {
-  outline-width: 0;
-  border-radius: 10px;
-    border: 2px solid pink;
-    width: 50%;
-}
 
 
-.add-item-btn, .view-in-list-btn {
+
+#add-item-btn, #view-in-list-btn {
   padding: 10px 15px;
   font-size: 12px;
   cursor: pointer;
