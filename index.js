@@ -121,7 +121,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 	}
   } else {
   	document.getElementById("login-div").style.display = "block";
-    document.getElementById("note").innerHTML = "Logged out";
 
   }
 });
