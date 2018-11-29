@@ -5,7 +5,6 @@
 	display:none;
 }
 .inventory-div{
-	border: 2px solid black;
 	height: 85%;
 	width: 85%;
 	margin:0 auto;
@@ -71,13 +70,13 @@ input[type="number"] {
 
 
 
-#add-item-btn, #view-in-list-btn {
+
+.add-item-btn, .view-in-list-btn {
   padding: 10px 15px;
   font-size: 12px;
   cursor: pointer;
   text-align: center;
   float:right;
-  
 }
 .view-in-list-btn{
 	margin-right: 10px;
