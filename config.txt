@@ -1,0 +1,6 @@
+		     apiKey: "AIzaSyAS0sFpZAeffhYaWKy7yrOegT5U4FtGX0A",
+    authDomain: "liarsproject.firebaseapp.com",
+    databaseURL: "https://liarsproject.firebaseio.com",
+    projectId: "liarsproject",
+    storageBucket: "liarsproject.appspot.com",
+    messagingSenderId: "497341972181"
