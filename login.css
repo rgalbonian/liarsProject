@@ -137,12 +137,6 @@ body{
 }
 
 /*inventory css*/
-.inventory-div{
-	border: 2px solid black;
-	height: 80%;
-	width: 85%;
-	margin:0 auto;
-}
 
 .inventory-header{
 	width: 100%;
